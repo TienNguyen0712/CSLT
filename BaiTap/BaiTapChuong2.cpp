@@ -241,7 +241,5 @@ int main(){
    cout<<"Nhap so tien muon vay: "; cin>>sotien;
    cout<<"Nhap so thang se tra: "; cin>>sothang;
    cout<<"Nhap lai suat vay trong 1 nam: "; cin>>laisuatvay;
- 
    return 0;
-
 }
