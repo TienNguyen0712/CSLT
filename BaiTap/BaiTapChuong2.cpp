@@ -4,6 +4,10 @@
 
 using namespace std;
 
+int Rand(int a, int b){
+    return a + (int)(rand()*(b - a + 1.0)/(1.0 + RAND_MAX));
+}
+
 int main(){
     //BAI TAP 2.1
     //CAU A
@@ -70,7 +74,6 @@ int main(){
     } else {
         cout<<"Khong la so Armstrong";
     }
-    */
    //CAU F
    int d = 0;
    double bien = pow(n, 2) - 1;
@@ -99,6 +102,37 @@ int main(){
         tich = tich*i;
     }
         cout<<"Trung binh nhan la: "<<round(pow(tich, 1.0/n) * 100)/100;
+    //CAU H
+        int a, b,  cout1 = 0, cout2 = 0, cout3 = 0, cout4 = 0, cout5 = 0, cout6 = 0;
+    cout<<"Nhap so lan tung xuc xac: "; cin>>a;
+    srand((unsigned int)time(NULL));
+    for (int i = 0; i < a; i++)
+    {   
+        b = Rand(1,6);
+        switch (b)
+        {
+        case 1:
+            cout1++;
+        case 2: 
+            cout2++;
+        
+        case 3:
+            cout3++;
+        case 4: 
+            cout4++;
+        case 5:
+            cout5++;
+        case 6: 
+            cout6++;
+        };
+    }
+    cout<<"So lan xuat hien mat 1: "<<cout1;
+    cout<<"\nSo lan xuat hien mat 2: "<<cout2;
+    cout<<"\nSo lan xuat hien mat 3: "<<cout3;
+    cout<<"\nSo lan xuat hien mat 4: "<<cout4;
+    cout<<"\nSo lan xuat hien mat 5: "<<cout5;
+    cout<<"\nSo lan xuat hien mat 6: "<<cout6;
+
     //BAI TAP 2.2
     //CAU A
     int n1, tich1 = 1, sum1 = 0; 
