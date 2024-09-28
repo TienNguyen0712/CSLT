@@ -277,4 +277,71 @@ int main(){
    cout<<"Nhap so thang se tra: "; cin>>sothang;
    cout<<"Nhap lai suat vay trong 1 nam: "; cin>>laisuatvay;
    return 0;
-}
+    //BAI TAP 2.8
+    //CAU A
+    for(int i = 1; i <= 9; i++){
+        for(int j = 1; j < i; j++){
+            for(int x = 1; x < j; x++){
+                for(int y = 1; y < x ; y++){
+                    for(int z = 1; z < y; z++){
+                        cout<<i<<j<<x<<y<<z;
+                    }
+                }
+            }
+        }
+    }
+    //CAU B
+    for(int i = 1; i <= 9; i++){
+        for(int j = 2; j < 9; j++){
+            for(int x = 3; x < 9; x++){
+                for(int y = 4; y < 9 ; y++){
+                    for(int z = 5; z < 9; z++){
+                        cout<<i<<j<<x<<y<<z;
+                    }
+                }
+            }
+        }
+    }
+    //CAU C
+    for(int i = 1; i <= 9; i++){
+        for(int j = 1; j < 9; j++){
+            for(int x = 1; x < 9; x++){
+                for(int y = 1; y < 9 ; y++){
+                    for(int z = 1; z < 9; z++){
+                        if((i + j + x + y + z) == 9){
+                            cout<<i<<j<<x<<y<<z;
+                    }
+                }
+            }
+        }
+    }
+    //BAI TAP 2.9
+    //CAU A
+    int n, d, sum = 0;
+    cout<<"Nhap n: "; cin>>n;
+    for(int i = 0; i < n; i++){
+        cin>>d;
+        sum =+d;
+    } cout<<sum;
+    //CAU B
+    int n, d, sum = 0;
+    cout<<"Nhap n: "; cin>>n;
+    for(int i = 0; i < n; i++){
+        cin>>d;
+        int max = 0, min;
+        if(d > max) max = d;
+        if(d < max) min = d;
+    }
+        cout<<max<<min;
+    //CAU C
+    int n, d, sum = 0;
+    cout<<"Nhap n: "; cin>>n;
+    for(int i = 0; i < n; i++){
+        cin>>d;
+        int dem = 0;
+        for(int i = 1; i <= d; i++){
+            if(d % i == 0) dem++;
+            if(dem == 2) sum++;
+    }
+        cout<<sum<<"La so nguyen to";
+    
