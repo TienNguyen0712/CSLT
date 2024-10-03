@@ -44,7 +44,30 @@ void sapxep(int a[], int &n){
     if(a[i] < a[j])
         hoanvi(a[i], a[j]);
 }
-void
+void xoaphantu(int a[], int &b, int k){
+    for (int i = k; i < b-1; i++)
+    {
+        a[i] = a[i + 1];
+        b--;
+    }
+}
+void chenphantu(int a[], int &b, int k, int x){
+    for (int i = b; i > k; i--)
+    {
+        a[i] = a[i - 1];
+        a[k] = x;
+        b++;
+    }
+    
+}
+void cauE(int a[], int &n){
+    for (int i = 0; i < n; i++)
+    {
+        if(sont(a[i])){
+            xoaphantu(a, n, i);
+            chenphantu(a, n, n-1, a[i]);
+        }
+}
 int main(){
     //BAI TAP 4.1
     int n;
@@ -69,7 +92,7 @@ int main(){
         sapxep(a, n);
         cout<<a[t];
         //CAU E
-        if(sont(a[i])) hoanvi()
+        cauE(a, n);
     }
 
     cout<<"Trung binh cong cua cac so trong mang: "<<fixed<<setprecision(2)<<float(s/n)<<"\n";
