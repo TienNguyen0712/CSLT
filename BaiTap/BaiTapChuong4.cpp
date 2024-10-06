@@ -1,103 +1,67 @@
-#include<bits/stdc++.h> //Thư viện tổng
+#include<bits/stdc++.h>
 using namespace std;
-//Tinh tong cac chu so trong mang
-void tinhtong(int a[], int &n, int i){
-    int s = 0, t;
-    while (a[i] != 0)
-    {
-        t = a[i] % 10;
-        s = s + t;
-        a[i] = a[i]/10;
+int tong(int b){
+    //CAU A
+    int i = b, s = 0, d;
+    while(i != 0){
+        s += i%10;
+        i/=10;
     }
-    cout<<"Tong cua cac chu so cua so trong mang la: "<<s<<" ";
+    return s;
 }
-bool sont(int n){
-    if (n < 2) return false;
+bool sont(int a){
+    //CAU C
     int d = 0;
-    for (int i = 2; i <= sqrt(n) + 1; i++)
-    {
-        if(n % i == 0) d++;
+    if (a < 2) return false;
+    for(int i  = 1; i <= a; i++){
+        if(a % i == 0) d++;
     }
-    if(d == 2) return true;
+    return d == 2;
 }
-bool sohc(int n){
-    int sum = 1;
-    for (int i = 2; i * i <= n; i++){
-        if (n % i == 0) {
-            sum += i + (n / i);
+bool socp(int a){
+    //CAU C
+    int i = 0;
+    while(i <= a){
+        if(i * i == a) return a > 0;
+        i++;
+    }
+}
+bool sohc(int a){
+    //CAU C
+    int s = 0;
+    for(int i = 1; i <= sqrt(a); i++){
+        if(a % i == 0){
+            s+=i;
+            if(s/i != i){
+                s+=a/i;
+            }
         }
     }
-    return sum == n && n != 1;
-}
-bool socp(int n){
-    int x = sqrt(n);
-    return  x*x == n;
-}
-void hoanvi(int a, int b){
-    int temp = a;
-    a = b;
-    b = temp;
-}
-void sapxep(int a[], int &n){
-    for (int i = 0; i < n; i++)
-    for (int j = i + 1; j  < n; j++)
-    if(a[i] < a[j])
-        hoanvi(a[i], a[j]);
-}
-void xoaphantu(int a[], int &b, int k){
-    for (int i = k; i < b-1; i++)
-    {
-        a[i] = a[i + 1];
-        b--;
-    }
-}
-void chenphantu(int a[], int &b, int k, int x){
-    for (int i = b; i > k; i--)
-    {
-        a[i] = a[i - 1];
-        a[k] = x;
-        b++;
-    }
-    
-}
-void cauE(int a[], int &n){
-    for (int i = 0; i < n; i++)
-    {
-        if(sont(a[i])){
-            xoaphantu(a, n, i);
-            chenphantu(a, n, n-1, a[i]);
-        }
+    return s - a == a;
 }
 int main(){
-    //BAI TAP 4.1
-    int n;
-    cout<<"Nhap so co trong mang: "; cin>>n;
-    int t;
-    cout<<"Nhap so lon thu k trong mang: "; cin>>t;
-    int a[n];
-    int s = 0, demnt = 0, demcp = 0, demhc = 0;
-    for (int i = 0 ; i < n; i++)
-    {
-        cin>>a[i];
-        //CAU A
-        tinhtong(a, n, i);
-        cout<<endl;
-        //CAU B
-        s = s + a[i];
-        //CAU C
-        if(sont(a[i])) demnt++;
-        if(socp(a[i])) demcp++;
-        if(sohc(a[i])) demhc++;
-        //CAU D
-        sapxep(a, n);
-        cout<<a[t];
-        //CAU E
-        cauE(a, n);
+    int n; 
+    cout<<"Nhap so thanh phan cua mang: ";
+    cin>>n;
+    int k; 
+    cout<<"Nhap so lon thu k cua mang: ";
+    cin>>k;
+    cout<<"Tong la: "; 
+    int i = 0, arr[n], sum = 0, dnt = 0, dcp = 0, dhc = 0;
+    while(i  < n){
+        //BAI TAP 4.1
+        cin>>arr[i];
+        cout<<tong(arr[i])<<" "; //CAU A
+        sum+=arr[i]; //CAU B
+        if(sont(arr[i])) dnt++; //CAU C
+        if(socp(arr[i])) dcp++; //CAU C
+        if(sohc(arr[i])) dhc++; //CAU C
+        i++;
     }
-
-    cout<<"Trung binh cong cua cac so trong mang: "<<fixed<<setprecision(2)<<float(s/n)<<"\n";
-    cout<<"Co "<<demnt<<" so nguyen to trong mang\n";
-    cout<<"Co "<<demcp<<" so chinh phuong trong mang\n";
-    cout<<"Co "<<demhc<<" so hoan chinh trong mang\n";
+    cout<<"Trung binh cong: "<<(float)sum/n; //CAU B
+    cout<<"So nguyen to co trong mang: "<<dnt; //CAU C
+    cout<<"So chinh phuong co trong mang: "<<dcp; //CAU C
+    cout<<"So hoan chinh co trong mang: "<<dhc; //CAU C
+    cout<<"So lon thuc"<< k <<" cua mang : "<<
     return 0;
 }
