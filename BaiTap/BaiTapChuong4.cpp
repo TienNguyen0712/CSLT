@@ -87,6 +87,76 @@ int sonnguoc(int a){
     }
     return sont(sum);
 }
+int timmangdainhat(int arr[], int n){
+    //BAI TAP 4.4 CAU A
+    int dp[n];
+    for( int i = 0; i < n; i++){
+        dp[i] = 1;
+    }
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {   
+            int max = arr[j] + 1;
+            if(arr[i] > max) max = arr[i]; 
+        
+    }
+    int re = dp[0];
+    for(int i = 0; i < n; i++){
+        if(dp[i] > re) re = dp[i];
+    }
+    return re;
+    }
+}
+int tinhtong(int a[], int b){
+    //BAI TAP 4.4 CAU B
+    int m, c = 0;
+    cout<<"Nhap tong n muon tim: "; cin>>m;
+    for(int j = 0; j < b; j++){
+        for(int z = j+1; z < b; z++){
+            if(a[j] + a[z] == m) c++;
+        }
+    }
+    return c;
+}
+int cacsokhacnhau(int arr[], int n){
+    //BAI TAP 4.4 CAU D
+    int c[n];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i+1; i < n; j++)
+        {
+            if(arr[i] != arr[j]) c[i] = arr[i];            
+        }
+    }
+    sapxepmang(c, n);
+    return c[0]*c[1]*c[2];
+}
+int giatrikhac(int a[], int b){
+    //BAI TAP 4.4 CAU E
+    int c = 0;
+    for(int j = 0; j < b; j++){
+        for(int z = j+1; z < b; z++){
+            if(a[j] != a[z]) c++;
+        }
+    }
+    return c;
+}
+int xuathiennhieunhat(int a[], int b){
+    //BAI TAP 4.4 CAU F
+    int m;
+    for(int j = 0; j < b; j++){
+        for(int z = j+1; z < b; z++){
+            if(a[j] == a[z]) m = a[j];
+        }
+    }
+    return m;
+}
+int tinhTong(int arr[], int n) {
+    //BAI TAP 4.7 CAU A
+    if (n == 1) return arr[0];
+        return arr[0] + tinhTong(arr + 1, n - 1);
+}
 int main(){
     int n; 
     cout<<"Nhap so thanh phan cua mang: ";
@@ -125,6 +195,27 @@ int main(){
 
     xuat(arr, n); //CAU G
     //BAI TAP 4.2
+    //BAI TAP 4.3
+    //BAI TAP 4.4
+    //CAU A
+    cout<<timmangdainhat(arr, n);
+    //CAU B
+    cout<<tinhtong(arr, n)<<endl;
+    //CAU C
+    sapxepmang(arr, n);
+    cout<<arr[0]<<" "<<arr[n-1];
+    //CAU D
+    cout<<"Tich 3 so lon nhat: "<<cacsokhacnhau(arr, n);
+    //CAU E
+    cout<<giatrikhac(arr, n)<<endl;
+    //CAU F
+    cout<<"Phan tu xuat hien nhieu nhat: "<<xuathiennhieunhat(arr, n)<<endl;
+    //BAI TAP 4.5
+    //BAI TAP 4.6
+    //BAI TAP 4.7
+    //cAU A
+    cout<<tinhTong(arr, n);
+    //CAU B
     
     return 0;
 }
