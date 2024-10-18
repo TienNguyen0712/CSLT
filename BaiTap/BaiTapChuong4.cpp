@@ -210,6 +210,73 @@ void tongtamgiactren(int a[][205], int n, int m){
     }
     cout << sum;
 }
+void tong(int a[][205], int n, int m){
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++)
+        sum += a[i][j];
+    }
+    cout << sum;
+}
+bool soA(int n){
+    int sum = 0, d = 0, t;
+    for(int i = n; i != 0; i/=10){
+        d++;
+        t = i % 10;
+        sum+= pow(t, d);
+    }
+    return sum == n;
+}
+void timsoA(int a[][205], int n, int m){
+    for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+    if(soA(a[i][j])) cout << a[i][j];
+}
+void timMax(int a[][205], int n, int m){
+    int max = a[0][0];
+    for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+    if(a[i][j] > max ) cout << a[i][j];
+}
+void timMin(int a[][205], int n, int m){
+    int min = a[0][0];
+    for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+    if(a[i][j] < min ) cout << a[i][j];
+}
+bool sont(int n){
+    if (n < 2) return false;
+    for(int i = 2; i < sqrt(n) + 1; i++){
+        if(n % i == 0) return false;
+    }
+    return n > 1;
+}
+void timMinnguyento(int a[][205], int n, int m){
+    int min = a[0][0];
+    for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+    if(sont(a[i][j]) && a[i][j] < min ){ min = a[i][j];}
+    cout << min;
+}
+void tinhtongmoidong(int a[][205], int n, int m){
+    for(int i = 0; i  < n; i++){
+        int s = 0;
+        for(int j = 0; j < m; j++){
+            s+=a[i][j];
+        }
+            cout << s;
+    }
+}
+void tinhtongmoicot(int a[][205], int n, int m){
+    for(int i = 0; i  < m; i++){
+        int s = 0;
+        for(int j = 0; j < n; j++){
+            s+=a[i][j];
+        }
+        cout << s;
+    }
+}
+
 int main(){
     int n; 
     cout<<"Nhap so thanh phan cua mang: ";
@@ -295,5 +362,42 @@ int main(){
     //CAU E
     tongtamgiacduoi(ar, n, m);
     //CAU F
+    //BAI TAP 4.9
+    //CAU A
+    tong(ar, n, m);
+    //CAU B
+    timsoA(ar, n, m);
+    //CAU C
+    timMax(ar, n, m);
+    //CAU D
+    timMin(ar, n, m);
+    //CAU E
+    tinhtongmoidong(ar, n, m);
+    //CAU F
+    tinhtongmoicot(ar, n, m);
+    //CAU G
+    timMinnguyento(ar, n, m);
+    //BAI TAP 4.10
+    //CAU A
+    //CAU B
+    //CAU C
+    //CAU D
+    //CAU E
+    //CAU F
+    //BAI TAP 4.11
+    //CAU A
+    for(int i = 0; i < n; i++){
+        sort(ar[i], ar[i] + m);
+    }; //Dùng hàm
+    //CAU B
+    for(int j = 0; i < n; i++){
+        sort(ar[i], ar[i] + n);
+    }; //Dùng hàm
+    //CAU C
+    //BAI TAP 4.12
+    
+    //BAI TAP 4.13
+
     return 0;
+
 }
