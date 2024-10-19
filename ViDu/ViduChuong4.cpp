@@ -52,4 +52,108 @@ int main(){
     }
     cout<<dem;
     return 0;
+    //MANG 2 CHIEU 
+    //Nhap vao mang 2 chieu 
+    int m, n;
+    cout<<"Nhap so hang: "; cin>>m;
+    cout<<"Nhap so cot: "; cin>>n;
+    int arr[n][m];
+    for (int i = 0; i < m; i++)
+    for( int j = 0; j < n; j++)
+        cin>>arr[i][j];
+    //Xuat mang 2 chieu
+    for(int c = 0; c < m; c++){
+        for(int z = 0; z < n; z++)
+            cout<<arr[c][z];
+    }
+    //Tinh tong 
+    int sum = 0;
+     for(int c = 0; c < m; c++){
+        for(int z = 0; z < n; z++)
+            sum+=arr[c][z];
+    }
+    cout<<sum;
+    //Dem phan tu thoa dieu kien
+        int dem = 0;
+     for(int c = 0; c < m; c++){
+        for(int z = 0; z < n; z++)
+            if (/*Dieu kien bai toan*/)
+                dem++;
+    }
+    cout<<dem;
+    //Tim gia tri lon nhat
+    int max = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+           if(arr[i][j] > max) max = arr[i][j]; 
+        }
+    }
+    cout << max;
+    //Tim gia tri nho nhat
+    int min = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+           if(arr[i][j] < min) min = arr[i][j]; 
+        }
+    }
+    cout << min;
+    //Tong cac phan tu moi hang
+    for(int i = 0; i < n; i++){
+        int sum = 0;
+        for(int j = 0; j < m; j++){
+           sum += arr[i][j]; 
+            }
+    }
+    cout << sum;
+    //Tong cac phan tu moi cot
+    for(int j = 0; j < n; j++){
+        int sum = 0;
+        for(int i = 0; i < m; i++){
+           sum += arr[i][j]; 
+            }
+    }
+    cout << sum;
+    //Gia tri lon nhat moi dong
+    for(int i = 0; i < n; i++){
+        int max = 0;
+        for(int j = 0; j < m; j++){
+           if(arr[i][j] > max) max = arr[i][j]; 
+            }
+    }
+    cout << max;
+    //Gia tri lon nhat moi cot
+    for(int i = 0; i < n; i++){
+        int max = 0;
+        for(int j = 0; j < m; j++){
+           if(arr[i][j] > max) max = arr[i][j]; 
+            }
+    }
+    cout << max;
+    //Tong cac phan tu tren duong cheo chinh 
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+    for (int j = 0; j < m; j++)
+    sum = sum + a[i][i];
+    }
+    cout << sum;
+    //Tong cac so tren duong cheo phu
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+        sum = sum + a[i][n-i-1];
+    }
+    cout << sum;
+    //Tong cac so thuoc tam giac duoi
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < i; j++)
+        sum = sum + a[i][j];
+    }
+    cout << sum;
+    //Tong cac so tren tam giac tren
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = i; j < n; j++)
+        sum = sum + a[i][j];
+    }
+    cout << sum;
 }
