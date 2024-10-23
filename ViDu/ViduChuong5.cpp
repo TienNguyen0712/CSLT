@@ -12,6 +12,21 @@ struct sophuc
     int trc;
     int sau;
 };
+struct ngaysinh
+{
+    int ngay;
+    int thang;
+    int nam;
+};
+
+struct hoso
+{
+    char hovaten[50];
+    ngaysinh ns;
+    long luongcoban;
+    long thuong;
+    long thuclanh;
+};
 void nhapsp(sophuc &sp);
 void xuatsp(sophuc &sp);
 sophuc tongsp(sophuc sp1, sophuc sp2);
@@ -32,6 +47,10 @@ void nhanps(phanso ps1, phanso ps2); //Cach 3
 phanso chiaps(phanso ps1, phanso ps2); //Cach 1
 phanso chiaps(phanso ps1, phanso ps2, phanso &ps); //Cach 2
 void chiaps(phanso ps1, phanso ps2); //Cach 3
+void nhap(hoso a[], int n);
+void xuat(hoso a[], int n);
+void swap(hoso &hs1, hoso &hs2);
+void sapxep(hoso a[], int n);
 int main(){
     //Vidu1
     phanso ps1, ps2, ps;
@@ -69,8 +88,15 @@ int main(){
     xuatsp(sp_t); 
     xuatsp(sp_th); 
     //Vidu2
-    
+    int n;
+    cout << "Nhap so nhan vien muon lam ho so: "; cin >> n;
+    hoso nv[n];
+    nhap(nv, n);
+    cout << endl;
+    sapxep(nv, n);
+    xuat(nv, n);
     return 0;
+    //Vidu3
 }
 
 void nhapps(phanso &ps){
@@ -180,3 +206,35 @@ sophuc truesp(sophuc sp1, sophuc sp2){
     sp.sau = sp1.sau / sp2.sau;
     return sp;
 }
+void nhap(hoso a[], int n){
+    for (int i = 0; i < n; i++)
+    {   cout << "-------Nhap du lieu cua nhan vien thu " << i + 1 << "--------------" << endl; 
+        cout << "Nhap ho va ten: "; fflush(stdin);gets(a[i].hovaten);
+        cout << "Nhap ngay thang nam: "; cin >> a[i].ns.ngay >> a[i].ns.thang >> a[i].ns.nam;
+        cout << "Nhap luong co ban: "; cin >> a[i].luongcoban;
+        cout << "Nhap tien thuong: "; cin >> a[i].thuong;
+    }
+}
+void xuat(hoso a[], int n){
+    for(int i = 0; i < n; i++){
+        cout << "--------Xuat du lieu cua nhan vien thu " << i + 1 <<"-----------------" << endl;
+        cout << "Ho va ten: " << a[i].hovaten << endl;
+        cout << "Ngay thang nam: " << a[i].ns.ngay << "/" << a[i].ns.thang << "/" << a[i].ns.nam << endl;
+        cout << "Luong co ban: " << a[i].luongcoban << endl;
+        cout << "Tien thuong: " << a[i].thuong << endl;
+        a[i].thuclanh = a[i].luongcoban + a[i].thuong;
+        cout << "Thuc lanh: " <<  a[i].thuclanh << endl;
+    }
+}
+void swap(hoso &hs1, hoso &hs2){
+    hoso t = hs1;
+        hs1 = hs2;
+        hs2 = t;
+}
+void sapxep(hoso a[], int n){
+    for(int i = 0 ; i < n; i++)
+    for(int j = i + 1; j < n; j++)
+            if (a[i].thuclanh < a[j].thuclanh)
+                swap(a[i], a[j]);
+}
+
