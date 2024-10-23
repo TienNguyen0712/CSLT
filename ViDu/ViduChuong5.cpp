@@ -27,6 +27,11 @@ struct hoso
     long thuong;
     long thuclanh;
 };
+struct point
+{
+    int x;
+    int y;
+};
 void nhapsp(sophuc &sp);
 void xuatsp(sophuc &sp);
 sophuc tongsp(sophuc sp1, sophuc sp2);
@@ -51,6 +56,9 @@ void nhap(hoso a[], int n);
 void xuat(hoso a[], int n);
 void swap(hoso &hs1, hoso &hs2);
 void sapxep(hoso a[], int n);
+void nhap(point a[], int &n);
+void xuly(point a[], int n);
+void capdiemgannhaunhat(point a[], int n);
 int main(){
     //Vidu1
     phanso ps1, ps2, ps;
@@ -95,8 +103,14 @@ int main(){
     cout << endl;
     sapxep(nv, n);
     xuat(nv, n);
-    return 0;
     //Vidu3
+    int n;
+    cout << "Nhap so diem muon tao: "; cin >> n;
+    point diem[n];
+    nhap(diem, n);
+    xuly(diem, n);
+    capdiemgannhaunhat(diem, n);
+    return 0;
 }
 
 void nhapps(phanso &ps){
@@ -237,4 +251,34 @@ void sapxep(hoso a[], int n){
             if (a[i].thuclanh < a[j].thuclanh)
                 swap(a[i], a[j]);
 }
+void nhap(point a[], int &n){
+    for(int i = 0; i < n; i++){
+        cout << "Nhap toa do diem thu " << i + 1 << endl;
+        cin >> a[i].x >> a[i].y;
+    }
+}
+void xuly(point a[], int n){
+    int dem = 0, d = 0;
+    for(int i = 0; i < n; i++){
+        if(a[i].x > 0 && a[i].y > 0 || a[i].x < 0 && a[i].y > 0 || a[i].x < 0 && a[i].y < 0 || a[i].x > 0 && a[i].y < 0){
+            dem++;
+        }
+        if(a[i].x == 0 || a[i].y == 0){
+            d++;
+        }
+    }
+    cout << "Co " << dem << " diem nam o goc phan tu" << endl;
+    cout << "Co " << d << " diem nam tren truc toa do" << endl;
+}
+void capdiemgannhaunhat(point a[], int n){
+    int min = sqrt(pow(a[1].x - a[0].x, 2) + pow(a[1].y - a[0].y, 2));  
+    for (int i = 0; i < n; i++){
+        for(int j = i + 1; j < n; j++){
+            if(sqrt(pow(a[j].x - a[i].x, 2) + pow(a[j].y - a[i].y, 2)) < min){
+                min = sqrt(pow(a[j].x - a[i].x, 2) + pow(a[j].y - a[i].y, 2));
+                cout << "( " << a[i].x << ";" << a[i].y << " )" << "va" << "( " << a[j].x << ";" << a[j].y << " )" << endl;    
+            }
+        }
+    }
+};
 
