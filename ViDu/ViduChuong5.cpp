@@ -271,12 +271,15 @@ void xuly(point a[], int n){
     cout << "Co " << d << " diem nam tren truc toa do" << endl;
 }
 void capdiemgannhaunhat(point a[], int n){
+    if( n == 2 ){
+        cout << "( " << a[0].x << ";" << a[0].y << " )" << " va " << "( " << a[1].x << ";" << a[1].y << " )" << endl;    
+    }  
     int min = sqrt(pow(a[1].x - a[0].x, 2) + pow(a[1].y - a[0].y, 2));  
     for (int i = 0; i < n; i++){
         for(int j = i + 1; j < n; j++){
             if(sqrt(pow(a[j].x - a[i].x, 2) + pow(a[j].y - a[i].y, 2)) < min){
                 min = sqrt(pow(a[j].x - a[i].x, 2) + pow(a[j].y - a[i].y, 2));
-                cout << "( " << a[i].x << ";" << a[i].y << " )" << "va" << "( " << a[j].x << ";" << a[j].y << " )" << endl;    
+                cout << "( " << a[i].x << ";" << a[i].y << " )" << " va " << "( " << a[j].x << ";" << a[j].y << " )" << endl;    
             }
         }
     }
