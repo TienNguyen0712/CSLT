@@ -20,7 +20,8 @@ using namespace std;
         return s;
     }
 int main(){
-    //Vidu1 //Nhap cac phan tu
+    //Vidu1 
+    //Nhap cac phan tu
     int n; cin>>n;
     int a[n];
     for (int i = 0; i < n; i++)
@@ -52,10 +53,141 @@ int main(){
     }
     cout<<dem;
     return 0;
+    //Dat linh canh
+    //Q3
+        #include <bits/stdc++.h>
+
+        using namespace std;
+
+        void nhap(int a[], int n);
+        void sontMax(int a[], int n);
+        int main(){
+            int n;
+            cout << "Nhap so phan tu cua Mang: "; cin >> n;
+            int a[n];
+            nhap(a, n);
+            sontMax(a, n);
+            return 0;
+        }
+        void nhap(int a[], int n){
+            cout << "Nhap so phan tu cua Mang: ";
+            for(int i = 0; i < n; i++)
+                cin >> a[i];
+        }
+        int sont(int n){
+            if (n < 2) return false;
+            for(int i = 2; i  < sqrt(n) + 1; i++){
+                if(n % i == 0 ) return false;
+            }
+            return n;
+        }
+        void sontMax(int a[], int n){
+            int max = a[0];
+            for(int i = 1 ; i < n; i++){
+                if(sont(a[i]) > max) max = sont(a[i]);
+            }
+            cout << "So nguyen to lon nhat trong Mang la: " << max;
+        }
+
+    //Q4
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void nhap(int a[], int n);
+void sontMin(int a[], int n);
+int main(){
+    int n;
+    cout << "Nhap so phan tu cua Mang: "; cin >> n;
+    int a[n];
+    nhap(a, n);
+    sontMin(a, n);
+    return 0;
+}
+void nhap(int a[], int n){
+    cout << "Nhap so phan tu cua Mang: ";
+    for(int i = 0; i < n; i++)
+        cin >> a[i];
+}
+int sont(int n){
+    if (n < 2) return false;
+    for(int i = 2; i  < sqrt(n) + 1; i++){
+        if(n % i == 0 ) return false;
+    }
+    return n;
+}
+void sontMin(int a[], int n){
+    int min = a[0];
+    for(int i = 1 ; i < n; i++){
+        if(sont(a[i]) < min) min = sont(a[i]);
+    }
+    cout << "So nguyen to nho nhat trong Mang la: " << max;
+}
+
+    //Thuat toan tim kiem
     //Dat linh canh 
     //Q1
-    
+    void nhap(int a[], int n);
+    void timkiem(int a[], int n);
+        int main(){
+            int n;
+            cout << "Nhap so phan tu cua mang: "; cin >> n;
+            int a[n];
+            nhap(a, n);
+            timkiem(a, n);
+            return 0;
+        
+        }
+   void nhap(int a[], int n){
+        cout << "Nhap phan tu cho Mang: ";
+        for(int i = 0; i < n; i++)
+                cin >> a[i];
+        }
+   void timkiem(int a[], int n){
+        int x, d, dem = 0;
+        cout << "Nhap phan tu muon tim: "; cin >> x;
+    for(int i = 0; i < n; i++)
+        if(a[i] == x){
+            d = i;
+            dem = 1;
+            break;
+        }
+    if(dem == 1){
+        cout << d;
+    } else {
+        cout << "-1";
+    }
+}
     //Q2
+   void nhap(int a[], int n);
+   void timkiem(int a[], int n);
+   int main(){
+      int n;
+      cout << "Nhap so phan tu cua mang: "; cin >> n;
+      int a[n];
+      nhap(a, n);
+      timkiem(a, n);
+      return 0;
+   }
+ void nhap(int a[], int n){
+    cout << "Nhap phan tu cho Mang: ";
+    for(int i = 0; i < n; i++)
+        cin >> a[i];
+ }
+ void timkiem(int a[], int n){
+    int x, d, dem = 0;
+    cout << "Nhap phan tu muon tim: "; cin >> x;
+    for(int i = 0; i < n; i++)
+        if(a[i] == x){
+            d = i;
+            dem = 1;
+        }
+    if(dem == 1){
+        cout << d;
+    } else {
+        cout << "-1";
+    } 
+ }
     //MANG 2 CHIEU 
     //Nhap vao mang 2 chieu 
     int m, n;
