@@ -52,6 +52,10 @@ int main(){
     }
     cout<<dem;
     return 0;
+    //Dat linh canh 
+    //Q1
+    
+    //Q2
     //MANG 2 CHIEU 
     //Nhap vao mang 2 chieu 
     int m, n;
