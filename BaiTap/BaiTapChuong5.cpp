@@ -12,6 +12,16 @@ struct point
     int x;
     int y;
 };
+struct donthuc {
+    int somu;
+    int heso;
+    int soc;
+};
+struct tamgiac {
+    int a;
+    int b;
+    int c;
+};
 void nhapdiem(point a[], int n);
 void dem(point a[], int n);
 void xuatdiem(point a, int n);
@@ -22,6 +32,10 @@ void tongArr(phanso a[], int n);
 void sapxepArr(phanso a[], int n);
 void capgannhaunhat(point a[], int n);
 void demdiem(point a[], int n);
+void nhapdonthuc(donthuc a[], int n);
+void ketquadathuc(donthuc a[], int n);
+void nhap(tamgiac a[], int n);
+void sMax(tamgiac a[], int n);
 int main(){
     //BAI TAP 5.1
     int n;
@@ -49,6 +63,22 @@ int main(){
     //CAU C
     cout << endl;
     demdiem(p, n);
+    //BAI TAP 5.3
+    int n;
+    cout << "Nhap so da thuc: "; cin >> n;
+    donthuc Arr[n];
+    nhapdonthuc(Arr, n);
+    ketquadathuc(Arr, n);
+    //BAI TAP 5.4
+    int n;
+    cout << "Nhaqp so tam giac: "; cin >> n;
+    tamgiac Arr[n];
+    nhap(Arr, n);
+    sMax(Arr, n);
+    //BAI TAP 5.5
+    //CAU A
+    //CAU B
+    //CAU C
     return 0;
 }
 void nhap(phanso a[], int n){
@@ -158,4 +188,45 @@ void demdiem(point a[], int n){
     cout << "Co " << d1 << " diem nam tren duong thang 3x+4y+1=0" << endl;
     cout << "Co " << d2 << " diem nam duoi duong thang 3x+4y+1=0" << endl;
     cout << "Co " << d3 << " diem thuoc duong thang 3x+4y+1=0" << endl;
+}
+void nhapdonthuc(donthuc a[], int n){
+    for(int i = 0; i < n; i++){
+        cout << "Nhap he so da thuc " << i + 1 << ": "; cin >> a[i].heso;
+        cout << "Nhap so mu da thuc " << i + 1 << ": "; cin >> a[i].somu;
+    }
+    cout << "Nhap so C: "; cin >> a[n-1].soc;
+}
+void ketquadathuc(donthuc a[], int n){
+    int x, temp;
+    cout << "Nhap x: "; cin >> x;
+    int s = 0;
+    for (int i = 0; i < n; i++)
+    {
+        temp = a[i].heso * pow(x, a[i].somu);
+        s+=temp;
+    }
+    
+    cout << "Ket qua la cau da thuc la: " << s + a[n-1].soc;
+}
+void nhap(tamgiac a[], int n){
+    for (int i = 0; i < n; i++){
+        cout << "Nhap canh a tam giac thu: " << i + 1 << ": "; cin >> a[i].a;
+        cout << "Nhap canh b tam giac thu: " << i + 1 << ": "; cin >> a[i].b;
+        cout << "Nhap canh c tam giac thu: " << i + 1 << ": "; cin >> a[i].c;
+    
+    }
+}
+float s(tamgiac a){
+    float p = (a.a + a.b + a.c)/2;
+    float s = sqrt(p*(p-a.a) * (p-a.b) * (p-a.c));
+    return s;
+}
+void sMax(tamgiac a[], int n){
+    int max = INT_MIN, sum = 0;
+    for(int i = 0; i < n; i++){
+        if(s(a[i]) > max) max = s(a[i]);
+        sum+=s(a[i]);
+    }
+    cout << "Dien tich lon nhat trong cac tam gia la: " << fixed << setprecision(2) << max << endl;
+    cout << "Tong cua cac tam giac la: " << sum;
 }
