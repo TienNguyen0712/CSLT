@@ -22,6 +22,11 @@ struct tamgiac {
     int b;
     int c;
 };
+struct hoso {
+    long manhanvien, luongcb, thuong, thuclanh;
+    char hovaten[50];
+    int ngaysinh, thangsinh, namsinh;
+};
 void nhapdiem(point a[], int n);
 void dem(point a[], int n);
 void xuatdiem(point a, int n);
@@ -36,6 +41,11 @@ void nhapdonthuc(donthuc a[], int n);
 void ketquadathuc(donthuc a[], int n);
 void nhap(tamgiac a[], int n);
 void sMax(tamgiac a[], int n);
+void nhap(hoso nv[], int &n);
+void xepMin(hoso nv[], int n);
+void xepMax(hoso nv[], int n);
+void xuat(hoso nv[], int n);
+int main(){
 int main(){
     //BAI TAP 5.1
     int n;
@@ -79,6 +89,32 @@ int main(){
     //CAU A
     //CAU B
     //CAU C
+    //BAI TAP 5.6
+    //CAU A
+    int n;
+    cout << "Nhap so nhan vien: "; cin >> n;
+    hoso hs[n];
+    nhap(hs, n);
+    //CAU B
+    int n;
+    cout << "Nhap so nhan vien: "; cin >> n;
+    hoso hs[n];
+    nhap(hs, n);
+    xepMin(hs, n);
+    xuat(hs, n);  
+    //CAU C
+    int n;
+    cout << "Nhap so nhan vien: "; cin >> n;
+    hoso hs[n];
+    nhap(hs, n);
+    xepMax(hs, n);
+    xuat(hs, n);  
+    //BAI TAP 5.7
+    //CAU A
+    //CAU B
+    //CAU C
+    //CAU D
+    //CAU E
     return 0;
 }
 void nhap(phanso a[], int n){
@@ -229,4 +265,43 @@ void sMax(tamgiac a[], int n){
     }
     cout << "Dien tich lon nhat trong cac tam gia la: " << fixed << setprecision(2) << max << endl;
     cout << "Tong cua cac tam giac la: " << sum;
+}
+void nhap(hoso nv[], int &n){
+    for(int i = 0; i < n; i++){    
+    cout << "Nhap Ma nhan vien: "; cin >> nv[i].manhanvien;
+    cout << "Nhap Ho va ten: "; fflush(stdin);gets(nv[i].hovaten);
+    cout << "Nhap ngay thang nam sinh: "; cin >> nv[i].ngaysinh >> nv[i].thangsinh >> nv[i].namsinh;
+    cout << "Nhap luong co ban: "; cin >> nv[i].luongcb;
+    cout << "Nhap thuong: "; cin >> nv[i].thuong;
+    nv[i].thuclanh = nv[i].thuong + nv[i].luongcb;
+    }
+}
+void swap(hoso &nv1, hoso &nv2){
+    hoso temp  = nv1;
+    nv1 = nv2;
+    nv2 = temp;
+}
+void xepMin(hoso nv[], int n){
+    for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+        if(nv[i].thuclanh < nv[j].thuclanh)
+            swap(nv[i], nv[j]);
+}
+void xuat(hoso nv[], int n){
+    cout << "------------------------------------------" << endl;
+    for(int i = 0; i < n; i++){
+        nv[i].thuclanh = nv[i].luongcb + nv[i].thuong;
+    cout << "- " << "Ma nhan vien: " << nv[i].manhanvien << endl;
+        cout << "- " << "Ho va ten: " << nv[i].hovaten << endl;
+        cout << "- " << "Ngay sinh thang nam sinh: " << nv[i].ngaysinh << "/"  << nv[i].thangsinh << "/" << nv[i].namsinh << endl;
+        cout << "- " << "Luong co ban: " << nv[i].luongcb << endl;
+        cout << "- " << "Thuong: " << nv[i].thuong << endl;
+        cout << "- " << "Thuc lanh: " << nv[i].thuclanh << endl;
+    }
+}
+void xepMax(hoso nv[], int n){
+    for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+        if(nv[i].thuclanh > nv[j].thuclanh)
+            swap(nv[i], nv[j]);
 }
