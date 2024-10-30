@@ -27,6 +27,12 @@ struct hoso {
     char hovaten[50];
     int ngaysinh, thangsinh, namsinh;
 };
+
+struct thisinh
+{
+    char sobaodanh[50], hovaten[50];
+    float ngoaingu, moncb, moncs, tongdiem;
+};
 void nhapdiem(point a[], int n);
 void dem(point a[], int n);
 void xuatdiem(point a, int n);
@@ -45,7 +51,13 @@ void nhap(hoso nv[], int &n);
 void xepMin(hoso nv[], int n);
 void xepMax(hoso nv[], int n);
 void xuat(hoso nv[], int n);
-int main(){
+void nhap(thisinh a[], int n);
+void diemthinhohon5(thisinh a[], int n);
+void tatcamonthilonhonhoacbang5(thisinh a[], int n);
+void tong3monMax(thisinh a[], int n);
+void timsobaodanh(thisinh a[], int n);
+void sapxeptangdansobaodanh(thisinh a[], int n);
+void xuatmang(thisinh a[], int n);
 int main(){
     //BAI TAP 5.1
     int n;
@@ -110,11 +122,21 @@ int main(){
     xepMax(hs, n);
     xuat(hs, n);  
     //BAI TAP 5.7
+    int n;
+    cout << "Nhap so thi sinh: "; cin >> n;
+    thisinh a[n];
+    nhap(a, n);
     //CAU A
+    diemthinhohon5(a, n);
     //CAU B
+    tatcamonthilonhonhoacbang5(a, n);
     //CAU C
+    tong3monMax(a, n);
     //CAU D
+    timsobaodanh(a, n);
     //CAU E
+    sapxeptangdansobaodanh(a, n);
+    xuatmang(a, n);
     return 0;
 }
 void nhap(phanso a[], int n){
@@ -164,7 +186,7 @@ void sapxepArr(phanso a[], int n){
     for(int i = 0; i < n; i++){
         for (int j = 0; j < n; j++)
         {
-            if(sosanhlonhon(a[i], s[j]))
+            if(sosanhlonhon(a[i], a[j]))
                 swap(a[i], a[j]);
         }
     }
@@ -304,4 +326,77 @@ void xepMax(hoso nv[], int n){
     for (int j = 0; j < n; j++)
         if(nv[i].thuclanh > nv[j].thuclanh)
             swap(nv[i], nv[j]);
+}
+void nhap(thisinh a[], int n){
+    for(int i = 0; i < n; i++){
+        cout << "Nhap so bao danh: "; gets(a[i].sobaodanh);
+        cout << "Nhap ho va ten: "; fflush(stdin);gets(a[i].hovaten);
+        cout << "Nhap diem mon ngoai ngu: : "; cin >> a[i].ngoaingu;
+        cout << "Nhap diem mon co ban: "; cin >> a[i].moncb;
+        cout << "Nhap diem mon co so: "; cin >> a[i].moncs;
+    }
+}
+void xuat(thisinh a){
+    a.tongdiem = a.moncb + a.moncs + a.ngoaingu;
+    cout << "So bao danh: " << a.sobaodanh;
+    cout << "Ho va ten: " << a.hovaten;
+    cout << "Diem mon ngoai ngu: : " << a.ngoaingu;
+    cout << "Diem mon co ban: " << a.moncb;
+    cout << "Diem mon co so: " << a.moncs;
+    cout << "Tong diem: " << a.tongdiem;
+}
+void diemthinhohon5(thisinh a[], int n){
+    for(int i =0 ; i < n; i++)
+    if(a[i].moncb < 5 || a[i].moncs < 5 || a[i].ngoaingu < 5)
+        xuat(a[i]);
+}
+void tatcamonthilonhonhoacbang5(thisinh a[], int n){
+    int d = 0;
+    for(int i = 0; i < n; i++)
+        (a[i].moncb >= 5 && a[i].moncs >= 5 && a[i].ngoaingu >= 5 && (a[i].moncb + a[i].moncb) >= 12){
+            d++;
+        }
+    cout << "Co" << d << " thi sinh";
+}
+void tong3monMax(thisinh a[], int n){
+    thisinh cao = a[0];
+    int max = INT_MIN;
+    for (int i = 0; i < n; i++){
+        a[i].tongdiem = a[i].moncb + a[i].moncs + a[i].ngoaingu;
+        if(a[i].tongdiem > max) max = a[i].tongdiem; cao = a[i];
+    }
+    cout << "Thi sinh co tong diem cao nhat: "; xuat(cao);
+}
+void timsobaodanh(thisinh a[], int n){
+    char x[50];
+    cout << "Nhap so bao danh muon tim kiem: "; gets(x);
+    for (int i = 0; i < n; i++)
+    {
+        if(a[i].sobaodanh == x){
+            xuat(a[i]);
+        }
+    }
+}
+void swap(thisinh &ts1, thisinh &ts2){
+    thisinh t = ts1;
+    ts1 = ts2;
+    ts2 = t;
+}
+void sapxeptangdansobaodanh(thisinh a[], int n){
+    for (int i = 0; i < n; i++)
+    for(int j = 0; j < n; j++)
+    if((int)a[i].sobaodanh > (int)a[j].sobaodanh)
+    swap(a[i], a[j]);
+}
+void xuatmang(thisinh a[], int n){
+    for (int i = 0; i < n; i++)
+    {   
+        a[i].tongdiem = a[i].moncb + a[i].moncs + a[i].ngoaingu;
+        cout << "So bao danh: " << a[i].sobaodanh;
+        cout << "Ho va ten: " << a[i].hovaten;
+        cout << "Diem mon ngoai ngu: : " << a[i].ngoaingu;
+        cout << "Diem mon co ban: " << a[i].moncb;
+        cout << "Diem mon co so: " << a[i].moncs;
+        cout << "Tong diem: " << a[i].tongdiem;
+    }
 }
