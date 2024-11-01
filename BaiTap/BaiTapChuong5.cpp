@@ -33,6 +33,11 @@ struct thisinh
     char sobaodanh[50], hovaten[50];
     float ngoaingu, moncb, moncs, tongdiem;
 };
+struct phanso
+{
+    int tu, mau;
+};
+
 void nhapdiem(point a[], int n);
 void dem(point a[], int n);
 void xuatdiem(point a, int n);
@@ -98,9 +103,46 @@ int main(){
     nhap(Arr, n);
     sMax(Arr, n);
     //BAI TAP 5.5
+    const int maxm = 100;
+    const int maxn = 100;
+    phanso a[maxm][maxn];
+
+    //Nhap phan so
+    int m, n;
+    cout << "Nhap so hang: "; cin >> m;
+    cout << "Nhap so cot: "; cin >> n;
+    for(int i = 0; i < m; i++){
+        for (int j = 0; j < n; j++)
+        {
+            cout << "Nhap tu va mau [" << i + 1 << ";" << j + 1 << "]: "; cin >> a[i][j].tu >> a[i][j].mau;    
+        }
+    }
     //CAU A
+    int max = INT_MIN, i_max, j_max;
+    for(int i = 0; i < m; i++){
+        for (int j = 0; j < n; j++)
+        {   
+            if((a[i][j].tu/a[i][j].mau) > max) i_max = i; j_max = j;        
+        }
+    }
+    cout << "Phan so lon nhat cua Mang o vi tri [" << i_max << ";" << j_max << "]" << endl;
     //CAU B
+    int dem = 0;
+    for(int i = 0; i < m; i++){
+    for (int j = 0; j < n; j++)
+        {   
+            if(ucln(a[i][j].tu,a[i][j].mau) == 1) dem++;        
+        }
+    }
+    cout << "Co " << dem << " phan so toi gian";
     //CAU C
+        for(int i = 0; i < m; i++){
+    for (int j = 0; j < n; j++)
+        {   
+            if(sosanh(a[i][j], a[i + 1][j])) swap(a[i][j], a[i + 1][j]);        
+            if(sosanh(a[i][j], a[i][j + 1])) swap(a[i][j], a[i][j + 1]);     
+        }
+    }
     //BAI TAP 5.6
     //CAU A
     int n;
@@ -399,4 +441,16 @@ void xuatmang(thisinh a[], int n){
         cout << "Diem mon co so: " << a[i].moncs;
         cout << "Tong diem: " << a[i].tongdiem;
     }
+}
+int ucln(int a, int b){
+    if(b == 0) return a;
+    return ucln(b , a % b);
+}
+void swap(phanso &a, phanso &b){
+    phanso t = a;
+    a = b;
+    b = t;
+}
+bool sosanh(phanso ps1, phanso ps2){
+    return ps1.tu * ps2.mau > ps2.tu * ps1.mau;
 }
