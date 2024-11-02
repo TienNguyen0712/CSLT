@@ -265,6 +265,7 @@ void sontMin(int a[], int n){
             }
     }
     cout << max;
+    //MANG VUONG
     //Tong cac phan tu tren duong cheo chinh 
     int sum = 0;
     for(int i = 0; i < n; i++){
