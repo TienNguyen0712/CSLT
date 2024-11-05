@@ -33,38 +33,31 @@ int cau2_2(int n){
     {
         s+=i;
     }
-    return s*n;
+    return s * n;
 }
-bool nt(int num) {
-    if (num <= 1) {
-        return false;
+bool nt(int n){
+    if(n < 2) return false;
+    if(n == 2) return true;
+    for (int i = 2; i <= sqrt(n) + 1; i++)
+    {
+        if(n % i == 0) return false;
     }
-    if (num <= 3) {
-        return true;
-    }
-    if (num % 2 == 0 || num % 3 == 0) {
-        return false;
-    }
-    int i = 5;
-    while (i * i <= num) {
-        if (num % i == 0 || num % (i + 2) == 0) {
-            return false;
-        }
-        i += 6;
-    }
-    return true; 
-
+    return true;
+    
 }
-
-bool dx(int num) {
-    string s = to_string(num);
-    return s == string(s.rbegin(), s.rend());
+bool dx(int n){
+    int d = 0; int x = n;
+    for (int i = n; i != 0; i/=10)
+    {
+        d = d * 10 + i % 10;
+    }
+    return d == x;
 }
-
-void timK() {
-    for (int num = 10001; num < 100000; num += 2) {
-        if (dx(num) && nt(num)) {
-            cout << num <<  " ";
+void timK(){
+    for (int i = 10001; i < 1000000; i+=2)
+    {
+        if(nt(i) && dx(i)){
+            cout << i << " ";
         }
     }
 }
