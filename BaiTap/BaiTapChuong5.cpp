@@ -37,6 +37,9 @@ struct phanso
 {
     int tu, mau;
 };
+struct tamgiac {
+    int a, b, c; 
+};
 
 void nhapdiem(point a[], int n);
 void dem(point a[], int n);
@@ -63,6 +66,18 @@ void tong3monMax(thisinh a[], int n);
 void timsobaodanh(thisinh a[], int n);
 void sapxeptangdansobaodanh(thisinh a[], int n);
 void xuatmang(thisinh a[], int n);
+void nhap(tamgiac a[], int &n);
+void tongS(tamgiac a[], int n);
+void nhap(tamgiac a[], int &n);
+void tongS(tamgiac a[], int n);
+
+const int maxn = 5000;
+
+struct tamgiac
+{
+    int xA, yA, xB, yB, xC, yC;
+};
+
 int main(){
     //BAI TAP 5.1
     int n;
@@ -179,7 +194,36 @@ int main(){
     //CAU E
     sapxeptangdansobaodanh(a, n);
     xuatmang(a, n);
+    tamgiac a[maxn]; int n;
+    nhap(a, n);
+    tongS(a, n);
+    tamgiac a[maxn]; int n;
+    nhap(a, n);
+    tongS(a, n);
     return 0;
+}
+void nhap(tamgiac a[], int &n){
+    cout << "Nhap so tam giac: "; cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Nhap toa do dinh A cua tam giac thu " << i + 1 << ": ";
+        cin >> a[i].xA >> a[i].yA;
+        cout << "Nhap toa do dinh B cua tam giac thu " << i + 1 << ": ";
+        cin >> a[i].xB >> a[i].yB;
+        cout << "Nhap toa do dinh C cua tam giac thu " << i + 1 << ": ";
+        cin >> a[i].xC >> a[i].yC;
+    }
+}
+int S(tamgiac a){
+    return 1/2 * abs((a.xB - a.xA)*(a.yC - a.yA) - (a.xC - a.xA) * (a.yB - a.yA));
+}
+void tongS(tamgiac a[], int n){
+    int s = 0;
+    for (int i = 0; i < n; i++)
+    {
+        s+=S(a[i]);
+    }
+    cout << "Tong cua " << n << " tam giac la: " << s;
 }
 void nhap(phanso a[], int n){
     for (int i = 0; i < n; i++)
@@ -453,4 +497,23 @@ void swap(phanso &a, phanso &b){
 }
 bool sosanh(phanso ps1, phanso ps2){
     return ps1.tu * ps2.mau > ps2.tu * ps1.mau;
+}
+void nhap(tamgiac a[], int &n){
+    cout << "Nhap so tam giac: "; cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Nhap a, b, c tam giac thu " << i + 1;
+        cin >> a[i].a >> a[i].b >> a[i].c;
+    } 
+}
+int S(tamgiac a){
+    int p = (a.a + a.b + a.c);
+    return sqrt(p*(p-a.a)*(p-a.b)*(p-a.c));
+}
+void tongS(tamgiac a[], int n){
+    int s = 0;
+    for(int i = 0; i < n; i++){
+        s+=S(a[i]);
+    }
+    cout << "Tong dien tich cua " << n << " tam giac " << s;
 }
