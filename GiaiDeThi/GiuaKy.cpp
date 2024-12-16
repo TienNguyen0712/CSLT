@@ -26,15 +26,17 @@ void sapxepsach(Sach a[], int n);
 void intonggiatritonkho(Sach a[], int n);
 void in(Sach a[], int n);
 void timkiem(Sach a[], int n, string x);
+void inhoadon(Sach a[], int n, Sach temp[], string mamua);
 
 int main(){
-    Sach kesach[maxn], sachthem; int n, choice, x; string sachtimkiem, sachxoa;
+    Sach kesach[maxn], sachthem, sachmua[maxn]; int n, choice, x; string sachtimkiem, sachxoa, mamua;
         do{
         cout << "----------------------------QUẢN LÝ SÁCH-------------------------------------------------" << endl;
         cout << "(1): Tạo danh sách                                  (2): Thêm một cuốn sách              " << endl;
         cout << "(3): Xoá sách                                       (4): Sắp xếp sách theo giá giảm dần  " << endl;
         cout << "(5): In tổng số lượng hàng tồn                      (6): In danh sách                    " << endl;
-        cout << "(7): Tìm kiếm sách theo yêu cầu                     (0): Thoát chương trình              " << endl;
+        cout << "(7): Tìm kiếm sách theo yêu cầu                     (8): In hoá đơn mua hàng             " << endl;
+        cout << "                            (0): Thoát chương trình                                      " << endl;
         cout << "-----------------------------------------------------------------------------------------" << endl;
         cout << "Nhập lựa chọn của bạn: ";
         cin >> choice;
@@ -67,6 +69,10 @@ int main(){
             break;
         case 7:
             timkiem(kesach, n, sachtimkiem);
+            cout << endl;
+            break;
+        case 8:
+            inhoadon(kesach, n, sachmua, mamua);
             cout << endl;
             break;
         }
@@ -117,6 +123,10 @@ void trung(Sach &a, Sach b){
 
 void themsach(Sach a[], int &n, int x, Sach d){
     bool check;
+    if(n == 0){
+        cout << "Không có sách nào trong kho!!!!" << endl;
+        return; 
+    }
     cout << "-  Mã sách:          "; cin >> d.Ma;
     for (int i = 1; i <= n; i++){
         if(a[i].Ma == d.Ma){
@@ -223,5 +233,67 @@ void timkiem(Sach a[], int n, string x){
         inthongtinsach(temp);
     } else {
         cout << "Không có sách này trong danh sách" << endl;
+    }
+}
+
+void intenvamasach1(Sach a[], int n){
+    for (int i = 1; i <= n; i++)
+    {
+        cout << a[i].Ten << " ";
+    }
+}
+
+
+void intenvamasach2(Sach a[], int n){
+    for (int i = 1; i <= n; i++)
+    {
+        cout << a[i].Ma << " ";
+    }
+}
+
+void hoadon(Sach sachmua[], int n){
+        cout << "Hoá đơn:                  " << endl;
+        cout << "-  Mã sách:               "; intenvamasach2(sachmua, n); cout << endl;
+        cout << "-  Tên sách:              "; intenvamasach1(sachmua, n); cout << endl;
+        cout << "-  Số lượng sách đã mua:  " << tonghangton(sachmua, n) << endl;
+        cout << "-  Tổng tiền:             " << fixed << setprecision(3) << tongtien(sachmua, n)/1000 << endl;
+}
+
+void inhoadon(Sach a[], int n, Sach temp[], string mamua){
+    int choice, slsachmua, d = 0; bool check = false;
+    if(n == 0){
+        cout << "Không tồn tại sách nào trong kho!!!" << endl;
+        return;
+    }
+    do {
+        cout << "- Nhập mã sách bạn muốn mua: "; cin >> mamua;
+        for (int i = 1; i <= n; i++)
+        {
+            if(a[i].Ma == mamua){
+                cout << "- Nhập số lượng sách mà bạn muốn mua: "; cin >> slsachmua;
+                if(slsachmua < a[i].Ton){
+                    a[i].Ton-=slsachmua;
+                    temp[i].Ton = slsachmua;
+                    temp[i].Ma = mamua;
+                    temp[i].Ten = a[i].Ten;
+                    temp[i].Don = a[i].Don;
+                    d++;
+                    break; 
+                } else {
+                    cout << "- Số lượng mua vượt quá sách trong kho!!!";
+                    return;
+                }
+            }
+        }
+        cout << "- Bạn có muốn tiếp tục không (1/0): "; cin >> choice;
+    } while (choice != 0);
+
+    if(d > 0){
+        check = true;
+    } 
+    if(check){
+        hoadon(temp, n);
+    } else {
+        cout << "- Không tồn tại mã sách này trong kho!!!";
     }
 }
