@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <iomanip>
 #include <cmath>
@@ -293,7 +294,5 @@ void inhoadon(Sach a[], int n, Sach temp[], string mamua){
     } 
     if(check){
         hoadon(temp, n);
-    } else {
-        cout << "- Không tồn tại mã sách này trong kho!!!";
     }
 }
