@@ -1,0 +1,23 @@
+-Bài tập chiều 2o/12/2o24, 3 tiết (sẽ xóa khi kết thúc buổi học)
+Cho chuỗi s chứa cóc ký tự chữ
+chuỗi và ký tự khoảng trồng; giả thiết đầu chuỗi s và cuối chuỗi s không
+có ký tự khoảng trằng, giữa các từ của chuỗi s có đúng một ký tự khoảng
+trắng.
+
+Hãy viết chương trình thức hiện các công việc sau:
+
+1. Đếm xem trong chuỗi có bao nhiêu ký tự khoảng trắng? bao nhiêu ký tự chữ hoa? bao nhiêu ký tự chữ thường?
+2. Đếm số lượng từ của chuỗi s.
+3. Đếm số lượng ký từ của mỗi từ trong chuỗi s.
+4. Tách một từ bên phải của chuỗi s.
+5. Tách mệt từ bên trái của chuỗi s.
+6. Hỏi từ dài nhất của chuối s có bao nhiêu ký tự?
+7. TÌm một từ dài nhất của chuỗi s
+8. Hãy xóa k ký tự, bắt đầu từ vị trí p của chuỗi s
+9. Nhập chuỗi y; hôi chuỗi y có thuộc chuỗi s hay không? nếu có trả về vị trí trong chuỗi s đã tìm thấy chuối y; nếu không tìm thấy trả về
+*KHÔNG".
+1o. Hãy tìm một chuỗi u thu được bằng cách loại bỏ các ký tự khoảng trắng trong chuỗi s
+11. Hãy sắp xếp các ký tự trong chuỗi s theo chiều tăng dần; các ký tỹ khoảng trắng giữ nguyên vị trí
+12. Đếm tần số xuất hiện của mỗi ký tỪ trong Chuỗi s
+
+Hết
