@@ -1,0 +1,34 @@
+Bài tập sáng 20/12/2024, 3 tiết (sẽ xóa khi kết thúc buổi học)
+
+Cho hai file văn bản num.txt và table.txt (có đính kèm):
+
+File num.txt có cấu trúc như sau:
+Dòng đầu ghi số n;
+Các dòng tiếp theo ghi n số.
+Đọc file trên, đưa dữ liệu vào biến n và biến mảng a[i] với i = 0...n-1.
+
+Hãy thực hiện các công việc sau:
+
+1. Tìm GTLN, GTNN của mảng.
+2. Đếm số lượng số nguyên tố.
+3. Đếm số lượng số hoàn chỉnh.
+4. Có bao nhiêu số a[i] trong dãy thỏa mãn a[i] < j và a[i] + a[j] = 52023?
+5. Sắp xếp các số a[i] theo chiều tăng dần; hãy in giá trị tại vị trí a[n/2].
+Kết quả ghi vào file văn bản num.out.
+
+File table.txt có cấu trúc như sau:
+
+Dòng đầu ghi số m;
+Các dòng tiếp theo, mỗi dòng ghi n số (trong đó dòng đầu tiên là dòng tựa đề).
+Đọc file trên, đưa dữ liệu vào các biến m, n và biến mảng a.
+
+Hãy thực hiện các công việc sau: 
+
+6. Đếm xem trong mảng có bao nhiêu số chính phương? 
+7. Tìm giá trị lớn thứ hai trong dòng; sau đó tìm giá trị nhỏ nhất trong các số lớn nhất vừa tìm được. 
+8. Tìm giá trị lớn nhất trong cột; sau đó tìm giá trị lớn nhất trong các số nhỏ nhất vừa tìm được. 
+9. Có bao nhiêu dòng cósố nguyên tố? 
+10. Đếm xem trong mảng chứa bao nhiêu số Fibonacci?
+
+Kết quả ghi vào file văn bản table.out.
+

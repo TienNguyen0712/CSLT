@@ -1,0 +1,5 @@
+GTLN: -2147483648, GTNN: 2147483647
+So luong so nguyen to: 0
+So luong so hoan chinh: 0
+So luong so cong nhau bang 51023: 0
+So co gia tri tai n/2: 0

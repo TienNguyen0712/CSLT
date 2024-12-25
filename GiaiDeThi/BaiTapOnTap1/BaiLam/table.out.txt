@@ -1,0 +1,5 @@
+So luong so chinh phuong la: 0
+Gia tri nho nhat: 2147483647
+Gia tri lon nhat: -2147483648
+Dong co chua so nguyen to: 0
+So luong so fibonanci: 0
