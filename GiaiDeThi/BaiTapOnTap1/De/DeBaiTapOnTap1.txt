@@ -18,16 +18,16 @@ Kết quả ghi vào file văn bản num.out.
 
 File table.txt có cấu trúc như sau:
 
-Dòng đầu ghi số m;
+Dòng đầu ghi số n, m;
 Các dòng tiếp theo, mỗi dòng ghi n số (trong đó dòng đầu tiên là dòng tựa đề).
 Đọc file trên, đưa dữ liệu vào các biến m, n và biến mảng a.
 
 Hãy thực hiện các công việc sau: 
 
 6. Đếm xem trong mảng có bao nhiêu số chính phương? 
-7. Tìm giá trị lớn thứ hai trong dòng; sau đó tìm giá trị nhỏ nhất trong các số lớn nhất vừa tìm được. 
+7. Tìm giá trị lớn nhất trong dòng; sau đó tìm giá trị nhỏ nhất trong các số lớn nhất vừa tìm được. 
 8. Tìm giá trị lớn nhất trong cột; sau đó tìm giá trị lớn nhất trong các số nhỏ nhất vừa tìm được. 
-9. Có bao nhiêu dòng cósố nguyên tố? 
+9. Có bao nhiêu dòng có số nguyên tố? 
 10. Đếm xem trong mảng chứa bao nhiêu số Fibonacci?
 
 Kết quả ghi vào file văn bản table.out.
